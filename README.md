@@ -1,6 +1,4 @@
-==============================================
-Solving a Traveling Salesperson Problem by QPU
-==============================================
+# Solving a Traveling Salesperson Problem by QPU
 
 A demo on using the D-Wave Ocean SDK to solve the Traveling Salesperson Problem (TSP) and comparing differences in performance of solutions due to post-processing. 
 TSP is the problem of finding the shortest route for a salesperson to visit all given cities once and return to the starting city.
@@ -52,7 +50,7 @@ Code Specifics
 --------------
 
 Problem setting
-~~~~~~~~~~~~~~~
+---------------
 Let N be the number of cities and assign an index from ``0`` to ``N-1`` to each city.
 The dictionary ``positions`` has a city index in the key and x, y coordinate of a city in tuple form in the value.
 The coordinates of each city are randomly determined in this demo so you can rewrite this dictionary according to the target problem.
@@ -64,7 +62,7 @@ After describing the problem setting calculate the distances between each city a
 
 
 Problem formulation
-~~~~~~~~~~~~~~~~~~~
+-------------------
 Express the problem in QUBO format by using variables ``q[i][t]`` that take 1 if visiting city with index ``i`` at time ``t``, 0 otherwise.
 
 The first term of ``H_cost`` is  ``exp_origin``, which expresses the distance from the start point to the next city and from the last city to the endpoint.
@@ -76,7 +74,7 @@ Therefore, the objective function is represented by ``H_obj`` using normalizatio
 
 
 Solve QUBO and unembed samples
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------
 Submit the QUBO to the solver DW_2000Q_5.
 For that, we adopt ``minorminer.find_embedding`` to find embedding and embed the QUBO on the solver's graph.
 Call ``DWaveSampler.sample_qubo`` to get a response containing samples with broken chains.
@@ -86,7 +84,7 @@ Then use ``check_constraint`` function to compute the rate of unembedded solutio
 
 
 Visualize the result
-~~~~~~~~~~~~~~~~~~~~
+--------------------
 Visualize the result by Matplotlib package.
 First, display the histogram of the energy distribution of unembedded samples in each chain_break_method.
 
@@ -115,5 +113,4 @@ If you use DW_2000Q_5 and handle problems of the same size as this time, the opt
 
 License
 -------
-
 Released under the Apache License 2.0. See `LICENSE <LICENSE>`_ file.
