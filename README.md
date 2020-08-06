@@ -3,7 +3,7 @@
 A demo on using the D-Wave Ocean SDK to solve the Traveling Salesperson Problem (TSP) and comparing differences in performance of solutions due to post-processing. 
 TSP is the problem of finding the shortest route for a salesperson to visit all given cities once and return to the starting city.
 
-.. image:: route_example.png
+![example](route_example.png)
 
 In the figure above, the origin city is shown in red and the others are in blue.
 The lines represent the route of travel .
@@ -17,9 +17,9 @@ Usage
 
 A simple command that runs the demo. For example,
 
-.. code-block:: bash
-
-  python traveling-salesperson-problem.py
+```
+python traveling-salesperson-problem.py
+```
 
 
 Code Overview
@@ -49,8 +49,8 @@ For more information on Chain-Break Resolution, please check the link above.
 Code Specifics
 --------------
 
-Problem setting
----------------
+### Problem setting
+
 Let N be the number of cities and assign an index from ``0`` to ``N-1`` to each city.
 The dictionary ``positions`` has a city index in the key and x, y coordinate of a city in tuple form in the value.
 The coordinates of each city are randomly determined in this demo so you can rewrite this dictionary according to the target problem.
@@ -61,8 +61,8 @@ You can change the variable contents if necessary.
 After describing the problem setting calculate the distances between each city and assign them to the matrix ``distances``.
 
 
-Problem formulation
--------------------
+### Problem formulation
+
 Express the problem in QUBO format by using variables ``q[i][t]`` that take 1 if visiting city with index ``i`` at time ``t``, 0 otherwise.
 
 The first term of ``H_cost`` is  ``exp_origin``, which expresses the distance from the start point to the next city and from the last city to the endpoint.
@@ -73,8 +73,8 @@ And also ``H_city`` expresses the first constraint and ``H_time`` states the sec
 Therefore, the objective function is represented by ``H_obj`` using normalization function as in the code.
 
 
-Solve QUBO and unembed samples
-------------------------------
+### Solve QUBO and unembed samples
+
 Submit the QUBO to the solver DW_2000Q_5.
 For that, we adopt ``minorminer.find_embedding`` to find embedding and embed the QUBO on the solver's graph.
 Call ``DWaveSampler.sample_qubo`` to get a response containing samples with broken chains.
@@ -83,8 +83,8 @@ We unembed obtained samples by specifying the above methods as an argument ``cha
 Then use ``check_constraint`` function to compute the rate of unembedded solutions satisfying constraints with each method.
 
 
-Visualize the result
---------------------
+### Visualize the result
+
 Visualize the result by Matplotlib package.
 First, display the histogram of the energy distribution of unembedded samples in each chain_break_method.
 
@@ -97,10 +97,10 @@ Result of Comparative Verification
 We considered the random problem in the case of 8 cities, and the following is an example of the result of comparative verification by this demo.
 The optimal solution route for this problem is displayed at the beginning of this file.
 
-.. image:: ./result/energy.png
-.. image:: ./result/majority_vote.png
-.. image:: ./result/weighted_random.png
-.. image:: ./result/minimize_energy.png
+![energy](./result/energy.png)
+![majority_vote](./result/majority_vote.png)
+![weighted_random](./result/weighted_random.png)
+![minimize_energy](./result/minimize_energy.png)
 
 All raw samples from the solver have broken chains, so we couldn't get any unembedded sample with ``discard``.
 Also, no sample satisfying the constraints was obtained for ``majority_vote`` and ``weighted_random``.
