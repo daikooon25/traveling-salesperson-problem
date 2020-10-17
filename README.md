@@ -31,10 +31,10 @@ The cost function represents total travel distance on a route and also there are
 1. Visit all cities once
 2. Visit only one city at the same time
 
-Using `PyQUBO <https://pyqubo.readthedocs.io/en/latest/>`_, the cost function including these constraints can get converted to a QUBO matrix.
+Using [`PyQUBO`](https://pyqubo.readthedocs.io/en/latest/), the cost function including these constraints can get converted to a QUBO matrix.
 
 In this demo, samples returned from the solver need post-processing.
-We use `Chain-Break Resolution <https://docs.ocean.dwavesys.com/projects/system/en/stable/reference/embedding.html#chain-break-resolution>`_ and resolve broken chains and unembed the samples (this operation is called post-processing).
+We use [`Chain-Break Resolution`](https://docs.ocean.dwavesys.com/projects/system/en/stable/reference/embedding.html#chain-break-resolution) and resolve broken chains and unembed the samples (this operation is called post-processing).
 Chain-Break Resolution has four methods:
 
 * ``majority_vote``
