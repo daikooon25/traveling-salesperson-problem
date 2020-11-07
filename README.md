@@ -1,6 +1,6 @@
 # Solving a Traveling Salesperson Problem by QPU
 
-A demo on using the D-Wave Ocean SDK to solve the Traveling Salesperson Problem (TSP) and comparing differences in performance of solutions due to post-processing. 
+A demo on using the D-Wave Ocean SDK to solve the Traveling Salesperson Problem (TSP) and comparing differences in performance of solutions due to post-processing methods to resolve chain breaks. 
 TSP is the problem of finding the shortest route for a salesperson to visit all given cities once and return to the starting city.
 
 ![example](route_example.png)
