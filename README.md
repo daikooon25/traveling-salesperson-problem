@@ -1,6 +1,6 @@
 # Solving a Traveling Salesperson Problem by QPU
 
-A demo on using the D-Wave Ocean SDK to solve the Traveling Salesperson Problem (TSP) and comparing differences in performance of solutions due to post-processing methods to resolve chain breaks. 
+A demo on using the D-Wave Ocean SDK to solve the Traveling Salesperson Problem (TSP) with support for several  post-processing methods to resolve chain breaks. 
 TSP is the problem of finding the shortest route for a salesperson to visit all given cities once and return to the starting city.
 
 ![example](route_example.png)
@@ -9,7 +9,7 @@ In the figure above, the origin city is shown in red and the others are in blue.
 The lines represent the route of travel .
 
 We use D-Wave QPU solver, DW_2000Q_5, to solve this problem.
-In this demo, you can see the differences in the properties of the solutions depending on post-processing applied to the samples obtained from the solver.
+In this demo, you can see differences in the properties of the solutions depending on post-processing applied to the samples obtained from the solver.
 
 
 Usage
@@ -31,10 +31,10 @@ The cost function represents total travel distance on a route and also there are
 1. Visit all cities once
 2. Visit only one city at the same time
 
-Using [`PyQUBO`](https://pyqubo.readthedocs.io/en/latest/), the cost function including these constraints can get converted to a QUBO matrix.
+Using [PyQUBO](https://pyqubo.readthedocs.io/en/latest/), the cost function including these constraints can get converted to a QUBO matrix.
 
 In this demo, samples returned from the solver need post-processing.
-We use [`Chain-Break Resolution`](https://docs.ocean.dwavesys.com/projects/system/en/stable/reference/embedding.html#chain-break-resolution) and resolve broken chains and unembed the samples (this operation is called post-processing).
+We use [Chain-Break Resolution](https://docs.ocean.dwavesys.com/projects/system/en/stable/reference/embedding.html#chain-break-resolution) and resolve broken chains and unembed the samples (this operation is called post-processing).
 Chain-Break Resolution has four methods:
 
 * ``majority_vote``
@@ -113,4 +113,4 @@ If you use DW_2000Q_5 and handle problems of the same size as this time, the opt
 
 License
 -------
-Released under the Apache License 2.0. See `LICENSE <LICENSE>`_ file.
+Released under the Apache License 2.0. See [LICENSE](https://github.com/daikooon25/traveling-salesperson-problem/blob/master/LICENSE) file.
